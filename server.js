@@ -9,10 +9,11 @@ app.use(express.json());
 const dbuser = encodeURIComponent(process.env.DBUSER)
 const dbpass = encodeURIComponent(process.env.DBPASS)
 
-const url =`mongodb+srv://${dbuser}:${dbpass}@cluster0.l5bwikr.mongodb.net/merncafe?retryWrites=true&w=majority&appName=Cluster0`
 
 
-mongoose.connect(url).then(() => {
+
+mongoose.connect(`mongodb+srv://${dbuser}:${dbpass}@cluster0.l5bwikr.mongodb.net/merncafe?retryWrites=true&w=majority&appName=Cluster0`
+).then(() => {
   app.listen(8082, () => {
     console.log("Server started");
   });
