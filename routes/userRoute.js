@@ -13,7 +13,7 @@ import {
 } from "../controllers/userController.js";
 Router.post("/register", register);
 Router.post("/login", login);
-Router.get("/", authenticate, authorize("admin"), showUsers);
+Router.get("/",  showUsers);
 Router.get("/:id", authenticate, authorize("admin"), getUser);
 Router.patch("/:id", authenticate, authorize("admin"), updateUser);
 Router.delete("/:id", authenticate, authorize("admin"), deleteUser);
