@@ -60,7 +60,9 @@ const login = async (req, res) => {
           id: existingUser._id,
           firstName: existingUser.firstName,
           email: existingUser.email,
+          phone: existingUser.phone,
           role: existingUser.role,
+
         };
         const token = jwt.sign(userObj, SECRET, { expiresIn: "1h" });
         res.status(200).json({ ...userObj, token });
@@ -77,12 +79,13 @@ const login = async (req, res) => {
 };
 const register = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, phone , password   } = req.body;
     const hashedpwd = await bcrypt.hash(password, 10);
     const user = {
       firstName,
       lastName,
       email,
+      phone,
       password: hashedpwd,
     };
     const result = await userModel.create(user);
